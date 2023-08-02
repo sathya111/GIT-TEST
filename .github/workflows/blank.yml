@@ -24,9 +24,9 @@ jobs:
       - name: Set up Azure CLI and Deploy
         run: |
           # Log in to Azure using the provided service principal credentials
-          $clientId = 32f10f01-9007-4dee-b588-36e1a40ed3cb
-          $clientSecret = c~88Q~ozrHjtGdfdLsYhmHdyku0xqn4-W1QlOagS
-          $tenantId = bc678f5e-c919-4e83-be3b-d1ed967dcf0f
+          $clientId = "32f10f01-9007-4dee-b588-36e1a40ed3cb"
+          $clientSecret = "c~88Q~ozrHjtGdfdLsYhmHdyku0xqn4-W1QlOagS"
+          $tenantId = "bc678f5e-c919-4e83-be3b-d1ed967dcf0f"
           az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
 
       
