@@ -28,5 +28,6 @@ jobs:
           $clientSecret = "c~88Q~ozrHjtGdfdLsYhmHdyku0xqn4-W1QlOagS"
           $tenantId = "bc678f5e-c919-4e83-be3b-d1ed967dcf0f"
           az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
+          allow-no-subscriptions: true
 
       
