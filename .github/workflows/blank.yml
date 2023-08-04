@@ -13,21 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install Azure CLI
-        run: |
-          # Download and install the Azure CLI
-          $url = "https://aka.ms/installazurecliwindows"
-          $output = "$env:TEMP\AzureCLI.msi"
-          Invoke-WebRequest -Uri $url -OutFile $output
-          Start-Process msiexec.exe -Wait -ArgumentList "/I $output /quiet"
 
-      - name: Set up Azure CLI and Deploy
-        run: |
-          # Log in to Azure using the provided service principal credentials
-          $clientId = "32f10f01-9007-4dee-b588-36e1a40ed3cb"
-          $clientSecret = "c~88Q~ozrHjtGdfdLsYhmHdyku0xqn4-W1QlOagS"
-          $tenantId = "bc678f5e-c919-4e83-be3b-d1ed967dcf0f"
-          az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
-          allow-no-subscriptions: true
+
+      - name: 'Az CLI login'
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
       
