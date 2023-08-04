@@ -15,7 +15,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-
+      - name: Install Azure CLI
+        run: |
+            # Download and install the Azure CLI
+            $url = "https://aka.ms/installazurecliwindows"
+            $output = "$env:TEMP\AzureCLI.msi"
+            Invoke-WebRequest -Uri $url -OutFile $output
+            Start-Process msiexec.exe -Wait -ArgumentList "/I $output /quiet"
 
       - name: 'Az CLI login'
         uses: azure/login@v1
